@@ -21,12 +21,15 @@ const server=http.createServer( (req,res)=>{
     });
     req.on('end',()=>{
         const parsedbody=Buffer.concat(body).toString();
-        console.log(parsedbody)
-    })
-    fs.writeFileSync('message.txt','DUMMY')
-    res.statusCode=382;
-    res.setHeader('Location','/');
-    return res.end();
+        const message=parsedbody.split('=')[1];
+        fs.writeFile('message.txt',message,(err)=>{
+            res.statusCode=382;
+            res.setHeader('Location','/');
+            return res.end();
+        });
+  
+    });
+    
 }
    res.setHeader('Content-Type','text/html');
    res.write('<html>');

@@ -16,8 +16,6 @@ const server=http.createServer( (req,res)=>{
   return  res.end()
     }
   else if(url=='/node'){
-
-  
    res.write('<html>');
    res.write('<head><title>My first page</title></head>')
    res.write('<body><h1>WElcome TO node js Project </h1></body>')
